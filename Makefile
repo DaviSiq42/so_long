@@ -12,7 +12,7 @@
 
 
 NAME = so_long
-SRC = teste.c
+SRC = teste.c colors.c
 OBJ = ${SRC:.c=.o}
 
 CC = cc -Wall -Werror -Wextra
