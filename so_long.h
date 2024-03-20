@@ -13,6 +13,18 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# define ON_KEYPRESS 2
+
+# define W	119
+# define A	97
+# define S	115
+# define D	100
+# define ESC	65307
+# define LEFT	65361
+# define RIGHT	65363
+# define UP	65362
+# define DOWN	65364
+
 #include "libs/libft/libft.h"
 #include "libs/mlx/mlx.h"
 
