@@ -28,16 +28,27 @@
 #include "libs/libft/libft.h"
 #include "libs/mlx/mlx.h"
 
-typedef struct s_map
-{
-	
-	
-} t_map;
+typedef struct s_data {
+	void	*img;
+	char	*addr;
+	int	bits_per_pixel;
+	int	line_lenght;
+	int	endian;
+}		t_data;
+
+typedef struct	s_coordinates {
+	int	x;
+	int	y;
+}		t_coordinates;
+
+typedef struct	s_mlx{
+	t_data	img;
+	t_coordinates	loc;
+	void	*mlx;
+	void	*mlx_win;
+}		t_mlx;
 
 int	create_trgb(int t, int r, int g, int b);
-int	get_t(int trgb);
-int	get_r(int trgb);
-int	get_g(int trgb);
-int	get_b(int trgb);
+void	player_init(int x, int y, t_mlx *lib);
 
 #endif
