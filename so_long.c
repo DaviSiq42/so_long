@@ -12,9 +12,18 @@
 
 #include "so_long.h"
 
-void	game_init
+void	game_init(char *map)
+{
+	t_mlx	lib;
+	
+	start_mlx(&lib);
+}
 
 int	main(int argc, char **argv)
 {
-	
+	if (argc == 2)
+		game_init(argv[1]);
+	else
+
+	return (0);
 }

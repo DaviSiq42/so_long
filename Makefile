@@ -6,13 +6,13 @@
 #    By: davioliv <davioliv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 16:08:26 by davioliv          #+#    #+#              #
-#    Updated: 2024/03/06 16:14:44 by davioliv         ###   ########.fr        #
+#    Updated: 2024/04/03 15:52:36 by davioliv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = so_long
-SRC = teste.c colors.c
+SRC = mlx.c so_long.c create_map.c
 OBJ = ${SRC:.c=.o}
 
 CC = cc -Wall -Werror -Wextra

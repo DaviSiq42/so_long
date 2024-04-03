@@ -29,6 +29,15 @@ int	handle_input(int key, t_mlx *lib)
 	return (0);
 }
 
+int	quit_game(t_mlx *lib)
+{
+	mlx_destroy_display(lib->mlx);
+	mlx_destroy_window(lib->mlx, lib->mlx_win);
+	free(lib->mlx);
+	exit(EXIT_SUCCESS);
+	return (0);
+}
+
 void	player_init(int x, int y, t_mlx *lib)
 {
 	while (x <= 50)
@@ -58,7 +67,8 @@ int	main(void)
 		ft_printf("ERROR");
 	lib.img.img = mlx_new_image(lib.mlx, 640, 480);
 	lib.img.addr = mlx_get_data_addr(lib.img.img, &lib.img.bits_per_pixel, &lib.img.line_lenght, &lib.img.endian);
-	mlx_key_hook(lib.mlx_win, handle_input, &lib);
+	mlx_hook(lib.mlx_win, ON_KEYPRESS, (1L << 0), handle_input, &lib);
+	mlx_hook(lib.mlx_win, ON_DESTROY, (1L << 17), quit_game, &lib); 
 	player_init(lib.loc.x, lib.loc.y, &lib);
 	mlx_loop(lib.mlx);
 }

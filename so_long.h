@@ -6,14 +6,17 @@
 /*   By: davioliv <davioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:48:12 by davioliv          #+#    #+#             */
-/*   Updated: 2024/03/06 15:35:59 by davioliv         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:09:56 by davioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# define SIZE 30 /*	later switch size to the number of pixels of sprite for player	*/
+
 # define ON_KEYPRESS 2
+# define ON_DESTROY 17
 
 # define W	119
 # define A	97
@@ -41,12 +44,15 @@ typedef struct	s_coordinates {
 	int	y;
 }		t_coordinates;
 
-typedef struct	s_mlx{
+typedef struct	s_game{
 	t_data	img;
 	t_coordinates	loc;
 	void	*mlx;
 	void	*mlx_win;
-}		t_mlx;
+	char	**map;
+	int	cols;
+	int	rows;
+}		t_game;
 
 int	create_trgb(int t, int r, int g, int b);
 void	player_init(int x, int y, t_mlx *lib);
