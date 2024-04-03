@@ -6,7 +6,7 @@
 /*   By: davioliv <davioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:48:50 by davioliv          #+#    #+#             */
-/*   Updated: 2024/02/21 17:48:52 by davioliv         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:41:57 by davioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	game_init(char *map)
 {
-	t_mlx	lib;
+	t_game	so_long;
 	
-	start_mlx(&lib);
+	start_mlx(&so_long);
+	make_map(&so_long, map);
+	mlx_loop(so_long.mlx);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: davioliv <davioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:48:12 by davioliv          #+#    #+#             */
-/*   Updated: 2024/04/03 15:09:56 by davioliv         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:39:10 by davioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct	s_game{
 	int	rows;
 }		t_game;
 
-int	create_trgb(int t, int r, int g, int b);
-void	player_init(int x, int y, t_mlx *lib);
+void	start_mlx(t_game *so_long);
+void	game_init(char *map);
+void	make_map(t_game *so_long, char *map_file);
 
 #endif

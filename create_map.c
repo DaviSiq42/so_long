@@ -6,7 +6,7 @@
 /*   By: davioliv <davioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 11:12:22 by davioliv          #+#    #+#             */
-/*   Updated: 2024/04/03 16:09:28 by davioliv         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:42:46 by davioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	make_map(t_game *so_long, char *map_file)
 	int	fd;
 
 	fd = open(map_file, O_RDONLY);
-	count_rows(&so_long, fd);
+	count_rows(so_long, fd);
 	so_long->map = ft_calloc(so_long->rows, sizeof(char *));
 	if (!so_long->map)
 		ft_printf("ERROR\n Problem while making map");
-	read_map(&so_long, fd);
+	read_map(so_long, fd);
 }
