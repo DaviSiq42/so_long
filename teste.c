@@ -62,7 +62,7 @@ int	main(void)
 	lib.mlx = mlx_init();
 	if (!lib.mlx)
 		ft_printf("ERROR");
-	lib.mlx_win =  mlx_new_window(lib.mlx, 640, 480, "SALVE");
+	lib.mlx_win =  mlx_new_window(lib.mlx, 1000, 480, "SALVE");
 	if (!lib.mlx_win)
 		ft_printf("ERROR");
 	lib.img.img = mlx_new_image(lib.mlx, 640, 480);
