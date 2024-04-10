@@ -6,7 +6,7 @@
 /*   By: davioliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:26:16 by davioliv          #+#    #+#             */
-/*   Updated: 2023/10/30 11:15:02 by davioliv         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:09:10 by davioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*add_line(char *buf, char *c)
 		add[i++] = buf[l++];
 	add[ft_strlen(buf) + ft_strlen(c)] = '\0';
 	free(c);
+	add = check_new_line(add);
 	return (add);
 }
 

@@ -6,7 +6,7 @@
 /*   By: davioliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 12:47:19 by davioliv          #+#    #+#             */
-/*   Updated: 2024/03/04 20:13:39 by davioliv         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:10:44 by davioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char	*add_line(char *buf, char *c);
 char	*read_line(int fd, char *c);
 char	*insert_line(char *c);
 char	*reset_line(char *c);
+char	*check_new_line(char *line);
 int		ft_printf(const char *type, ...);
 int		ft_printchar(char c);
 int		ft_printstr(char *str);

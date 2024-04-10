@@ -6,7 +6,7 @@
 #    By: davioliv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:03:20 by davioliv          #+#    #+#              #
-#    Updated: 2024/03/04 19:54:22 by davioliv         ###   ########.fr        #
+#    Updated: 2024/04/03 12:36:41 by davioliv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ CFLAGS	= -Wall -Werror -Wextra
 INCLUDE	= -I include
 RM	= rm -rf
 .c.o:
-	${CC} ${INCLUDE} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
-	ar rcs ${NAME} ${OBJS} ${HEADER}
+	ar rcs ${NAME} ${OBJS}
 
 all:	${NAME}
 
@@ -37,7 +37,7 @@ fclean:	clean
 re:	fclean all
 
 bonus:	${OBJS} ${OBJSB}
-	ar rcs ${NAME} ${OBJS} ${OBJSB} ${HEADER}
+	ar rcs ${NAME} ${OBJS} ${OBJSB}
 
 .PHONY:	all clean fclean re bonus
 .SILENT:

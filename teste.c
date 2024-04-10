@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_game *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -8,7 +8,7 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int	handle_input(int key, t_mlx *lib)
+int	handle_input(int key, t_game *lib)
 {
 	if (key == ESC)
 	{
@@ -17,6 +17,7 @@ int	handle_input(int key, t_mlx *lib)
 		mlx_destroy_window(lib->mlx, lib->mlx_win);
 		free(lib->mlx);
 		exit(EXIT_SUCCESS);
+		return (0);
 	}
 	if (key == W)
 	{
@@ -29,7 +30,7 @@ int	handle_input(int key, t_mlx *lib)
 	return (0);
 }
 
-int	quit_game(t_mlx *lib)
+int	quit_game(t_game *lib)
 {
 	mlx_destroy_display(lib->mlx);
 	mlx_destroy_window(lib->mlx, lib->mlx_win);
@@ -38,7 +39,7 @@ int	quit_game(t_mlx *lib)
 	return (0);
 }
 
-void	player_init(int x, int y, t_mlx *lib)
+void	player_init(int x, int y, t_game *lib)
 {
 	while (x <= 50)
 	{
@@ -55,14 +56,14 @@ void	player_init(int x, int y, t_mlx *lib)
 
 int	main(void)
 {
-	t_mlx	lib;
+	t_game	lib;
 
 	lib.loc.x = 0;
 	lib.loc.y = 350;
 	lib.mlx = mlx_init();
 	if (!lib.mlx)
 		ft_printf("ERROR");
-	lib.mlx_win =  mlx_new_window(lib.mlx, 1000, 480, "SALVE");
+	lib.mlx_win =  mlx_new_window(lib.mlx, 640, 480, "SALVE");
 	if (!lib.mlx_win)
 		ft_printf("ERROR");
 	lib.img.img = mlx_new_image(lib.mlx, 640, 480);

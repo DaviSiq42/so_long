@@ -6,11 +6,21 @@
 /*   By: davioliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:18:47 by davioliv          #+#    #+#             */
-/*   Updated: 2023/10/30 11:15:01 by davioliv         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:10:00 by davioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*check_new_line(char *line)
+{
+	if (line[0] == '\0')
+	{
+		free (line);
+		line = 0;
+	}
+	return (line);
+}
 
 char	*get_next_line(int fd)
 {
