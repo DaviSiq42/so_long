@@ -6,7 +6,7 @@
 #    By: davioliv <davioliv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 16:08:26 by davioliv          #+#    #+#              #
-#    Updated: 2024/04/05 12:50:53 by davioliv         ###   ########.fr        #
+#    Updated: 2024/04/15 18:03:27 by davioliv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC = mlx.c so_long.c create_map.c quit_all.c moves.c
 #SRC = teste.c colors.c
 OBJ = ${SRC:.c=.o}
 
-CC = cc -Wall -Werror -Wextra
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
 MAKE = make -C
 RM = rm -f
 LIBDIR = libs/libft
@@ -29,7 +30,7 @@ all:	${NAME}
 $(NAME):	${OBJ}
 	${MAKE} ${LIBDIR}
 	${MAKE} ${MLXDIR}
-	${CC} ${OBJ} ${LIB} ${MLX} -o ${NAME}
+	${CC} ${CFLAGS} ${OBJ} ${LIB} ${MLX} -o ${NAME}
 
 clean:
 	${MAKE} ${LIBDIR} clean
