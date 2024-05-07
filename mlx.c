@@ -21,3 +21,7 @@ void	start_mlx(t_game *so_long)
 	if (!so_long->mlx)
 		ft_printf("ERROR\n Problem while opening the window."); 
 }
+
+void	put_sprites(t_game *so_long)
+{
+
