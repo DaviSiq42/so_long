@@ -28,12 +28,12 @@ void	start_mlx(t_game *so_long)
 void	set_sprites(t_game *so_long)
 {
 	so_long->sprites = malloc(sizeof(t_sprite));
-	if (!(so_long->sprites)
+	if (!(so_long->sprites))
 	{
 		ft_printf("Couldn't allocate sprites");
 		return ;
 	}
-	so_long->sprites.img = mlx_xpm_file_to_image(so_long->mlx, FW, so_long->sprites.width, so_long->sprites.height);
+	so_long->sprites->img = mlx_xpm_file_to_image(so_long->mlx, FW, &(so_long->sprites->width), &(so_long->sprites->height));
 }
 
 void	see_map(t_game *so_long)
@@ -44,13 +44,13 @@ void	see_map(t_game *so_long)
 	y = -1;
 	while (++y < so_long->rows)
 	{
-		x = -1
+		x = -1;
 		while (++x < so_long->cols)
 			put_sprites(so_long, x, y);
 	}
 }
 void	put_sprites(t_game *so_long, int x, int y)
 {
-	if (so_long->map[y][x] = '1')
-		mlx_put_image_to_window(so_long->mlx, so_long->mlx_win, so_long->sprites.img, so_long->sprites.width * x, so_long->sprites.height * y);
+	if (so_long->map[y][x] == '1')
+		mlx_put_image_to_window(so_long->mlx, so_long->mlx_win, so_long->sprites->img, so_long->sprites->width * x, so_long->sprites->height * y);
 }

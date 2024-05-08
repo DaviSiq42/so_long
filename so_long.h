@@ -44,7 +44,7 @@ typedef struct	s_coordinates {
 }		t_coordinates;
 
 typedef struct	s_game{
-	t_sprite	sprites;
+	t_sprite	*sprites;
 	t_coordinates	loc;
 	void	*mlx;
 	void	*mlx_win;
@@ -63,5 +63,8 @@ void	count_rows(t_game *so_long, char *map_file);
 void	read_map(t_game *so_long, int fd);
 int	handle_input(int key, t_game *so_long);
 int	quit_game(t_game *so_long);
+void    set_sprites(t_game *so_long);
+void    see_map(t_game *so_long);
+void    put_sprites(t_game *so_long, int x, int y);
 
 #endif
