@@ -13,7 +13,8 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define SIZE 30 /*	later switch size to the number of pixels of sprite for player	*/
+# define SIZE 32 /*	later switch size to the number of pixels of sprite for player	*/
+# define FW "sprites/wall.xpm"
 
 # define ON_KEYPRESS 2
 # define ON_DESTROY 17
@@ -31,13 +32,11 @@
 #include "libs/libft/libft.h"
 #include "libs/mlx/mlx.h"
 
-typedef struct s_data {
+typedef struct s_sprite {
 	void	*img;
-	char	*addr;
-	int	bits_per_pixel;
-	int	line_lenght;
-	int	endian;
-}		t_data;
+	int	height;
+	int	width;
+}		t_sprite;
 
 typedef struct	s_coordinates {
 	int	x;
@@ -45,7 +44,7 @@ typedef struct	s_coordinates {
 }		t_coordinates;
 
 typedef struct	s_game{
-	t_data	img;
+	t_sprite	sprites;
 	t_coordinates	loc;
 	void	*mlx;
 	void	*mlx_win;
