@@ -13,8 +13,19 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define SIZE 32 /*	later switch size to the number of pixels of sprite for player	*/
+# define SIZE 32
+
 # define FW "sprites/wall.xpm"
+# define FB "sprites/background.xpm"
+# define FE "sprites/exit.xpm"
+# define FC "sprites/coins.xpm"
+# define FP "sprites/player.xpm"
+
+# define W1 0
+# define B1 1
+# define E1 2
+# define C1 3
+# define P1 4
 
 # define ON_KEYPRESS 2
 # define ON_DESTROY 17
