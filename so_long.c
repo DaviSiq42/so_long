@@ -18,6 +18,8 @@ void	game_init(char *map)
 	
 	make_map(&so_long, map);
 	start_mlx(&so_long);
+	set_sprites(&so_long);
+	see_map(&so_long);
 	check_map(&so_long);
 	mlx_hook(so_long.mlx_win, ON_KEYPRESS, (1L << 0), handle_input, &so_long);
 	mlx_hook(so_long.mlx_win, ON_DESTROY, (1L << 17), quit_game, &so_long);
