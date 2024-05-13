@@ -48,10 +48,10 @@ void	see_map(t_game *so_long)
 	int	y;
 
 	y = -1;
-	while (++y < so_long->rows)
+	while (y++ <= so_long->rows)
 	{
 		x = -1;
-		while (++x < so_long->cols)
+		while (x++ <= so_long->cols)
 			put_sprites(so_long, x, y);
 	}
 }
