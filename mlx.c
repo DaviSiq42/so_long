@@ -56,7 +56,7 @@ void	see_map(t_game *so_long)
 	}
 }
 
-void	put_sprites(t_game *so_long, int x, int y)
+void	put_sprites(t_game *so_long, int y, int x)
 {
 	if (so_long->map[y][x] == '1')
 		mlx_put_image_to_window(so_long->mlx, so_long->mlx_win, so_long->sprites[W1].img, so_long->sprites[W1].width * x, so_long->sprites[W1].height * y);
