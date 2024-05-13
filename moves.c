@@ -12,20 +12,39 @@
 
 #include "so_long.h"
 
+void	check_move(t_game *so_long)
+{
+	if (so_long->map[so_long->curr.y][so_long->curr.x] != '1')
+	{
+		ft_printf("You moved %i times.\n", so_long->moves);
+		so_long->map[so_long->curr.y][so_long->curr.x] = 'P';
+		so_long->map[so_long->prev.y][so_long->prev.x] = '0';
+		put_sprites(so_long, so_long->prev.y, so_long->prev.x);
+		put_sprites(so_long, so_long->curr.y, so_long->curr.x);
+	}
+	else
+	{
+		so_long->curr.y = so_long->prev.y;
+		so_long->curr.x = so_long->prev.x;
+	}
+}
+
 int	handle_input(int key, t_game *so_long)
 {
+	so_long->prev.y = so_long->curr.y;
+	so_long->prev.x = so_long->curr.x;
 	if (key == ESC)
-	{
-		ft_printf("The %d key (ESC) has been pressed\n\n", key);
 		quit_game(so_long);
-		return (0);
-	}
-	if (key == W)
-	{
-		ft_printf("The %d key (W) has been pressed\n\n", key);
-		so_long->loc.y++;
-		return (0);
-	}
-	ft_printf("The %d key has been pressed\n\n", key);
+	if (key == W || key == UP)
+		so_long->curr.y--;
+	if (key == A || key == LEFT)
+		so_long->curr.x--;
+	if (key == S || key == DOWN)
+		so_long->curr.y++;
+	if (key == D || key == RIGHT)
+		so_long->curr.x++;
+	check_move(so_long);
 	return (0);
 }
+
+
