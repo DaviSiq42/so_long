@@ -12,15 +12,55 @@
 
 #include "so_long.h"
 
+void	ft_move(t_game *so_long)
+{
+	static int	c;
+
+	so_long->moves++;
+	if (c)
+	{
+		so_long->map[so_long->curr.y][so_long->curr.x] = 'P';
+		so_long->map[so_long->prev.y][so_long->prev.x] = 'E';
+		c = 0;
+	}
+	else if (so_long->map[so_long->curr.y][so_long->curr.x] == 'E')
+	{
+		so_long->map[so_long->curr.y][so_long->curr.x] = 'P';
+		so_long->map[so_long->prev.y][so_long->prev.x] = '0';
+		c = 1;
+	}
+	else
+	{
+		so_long->map[so_long->curr.y][so_long->curr.x] = 'P';
+		so_long->map[so_long->prev.y][so_long->prev.x] = '0';
+	}
+	ft_printf("You moved %d times.\n", so_long->moves);
+	put_sprites(so_long, so_long->prev.y, so_long->prev.x);
+	put_sprites(so_long, so_long->curr.y, so_long->curr.x);
+}
+
 void	check_move(t_game *so_long)
 {
 	if (so_long->map[so_long->curr.y][so_long->curr.x] != '1')
 	{
-		ft_printf("You moved %i times.\n", so_long->moves);
-		so_long->map[so_long->curr.y][so_long->curr.x] = 'P';
-		so_long->map[so_long->prev.y][so_long->prev.x] = '0';
-		put_sprites(so_long, so_long->prev.y, so_long->prev.x);
-		put_sprites(so_long, so_long->curr.y, so_long->curr.x);
+		if (so_long->map[so_long->curr.y][so_long->curr.x] == 'C')
+		{
+			so_long->coins++;
+			ft_move(so_long);
+		}
+		else if (so_long->map[so_long->curr.y][so_long->curr.x] == 'E')
+		{
+			if (so_long->coins == so_long->total_coins)
+			{
+				quit_game(so_long);
+				ft_printf("You won!");
+				exit(EXIT_SUCCESS);
+			}
+			else
+				ft_move(so_long);
+		}
+		else
+			ft_move(so_long);
 	}
 	else
 	{
@@ -34,17 +74,20 @@ int	handle_input(int key, t_game *so_long)
 	so_long->prev.y = so_long->curr.y;
 	so_long->prev.x = so_long->curr.x;
 	if (key == ESC)
+	{
 		quit_game(so_long);
-	if (key == W || key == UP)
+		exit(EXIT_SUCCESS);
+	}
+	else if (key == W || key == UP)
 		so_long->curr.y--;
-	if (key == A || key == LEFT)
+	else if (key == A || key == LEFT)
 		so_long->curr.x--;
-	if (key == S || key == DOWN)
+	else if (key == S || key == DOWN)
 		so_long->curr.y++;
-	if (key == D || key == RIGHT)
+	else if (key == D || key == RIGHT)
 		so_long->curr.x++;
+	else
+		return (0);
 	check_move(so_long);
 	return (0);
 }
-
-

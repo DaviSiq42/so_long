@@ -26,8 +26,8 @@ void	check_locs(t_game *so_long)
 			if (so_long->map[y][x] == 'P')
 			{
 				so_long->player++;
-				so_long->curr.y = y;
-				so_long->curr.x = x;
+				so_long->curr.y = x;
+				so_long->curr.x = y;
 			}
 			if (so_long->map[y][x] == 'E')
 				so_long->exit++;
@@ -43,17 +43,15 @@ int check_surround(t_game *so_long)
 	int	y;
 
 	y = -1;
-	while (so_long->map[y][0] == '1' || so_long->map[y][so_long->cols] == '1')
+	while (y++ <= so_long->rows)
 	{
-		y++;
-		if (so_long->map[y][0] != '1')
+		if (so_long->map[y][0] != '1' || so_long->map[y][so_long->rows] != '1')
 			return (1);
 	}
 	x = -1;
-	while (so_long->map[y][x] == '1' || so_long->map[0][x] == '1')
+	while (x++ <= so_long->cols)
 	{
-		x++;
-		if (so_long->map[y][x] != '1')
+		if (so_long->map[so_long->cols][x] != '1' || so_long->map[0][x] != '1')
 			return (1);
 	}
 	return (0);
@@ -63,12 +61,12 @@ int	check_map(t_game *so_long)
 {
 	check_locs(so_long);
 	if (so_long->player != 1)
-		return (1);
+		return (11);
 	if (so_long->exit != 1)
-		return (2);
-	if (so_long->coins < 1)
-		return (3);
+		return (22);
+	if (so_long->total_coins < 1)
+		return (33);
 	if (check_surround(so_long) == 1)
-		return (4);
+		return (44);
 	return (0);
 }

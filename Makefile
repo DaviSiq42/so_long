@@ -12,7 +12,7 @@
 
 
 NAME = so_long
-SRC = mlx.c so_long.c create_map.c quit_all.c moves.c check_game.c
+SRC = mlx.c so_long.c create_map.c quit_all.c moves.c check_game.c flood_n_stuff.c
 OBJ = ${SRC:.c=.o}
 
 CC = cc

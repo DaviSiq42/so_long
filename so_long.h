@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # define SIZE 32
+# define SPRITES 5
 
 # define FW "sprites/wall.xpm"
 # define FB "sprites/background.xpm"
@@ -70,22 +71,29 @@ typedef struct	s_game{
 	int	rows;
 }		t_game;
 
+//mlx.c
 void	start_mlx(t_game *so_long);
+void	set_sprites(t_game *so_long);
+void	see_map(t_game *so_long);
+void	put_sprites(t_game *so_long, int y, int x);
+//so_long.c
 void	game_init(char *map);
-void	make_map(t_game *so_long, char *map_file);
-void	player_init(int x, int y, t_game *lib);
-int	quit_game(t_game *lib);
-int	create_trgb(int	t, int r, int g, int b);
+//create_map.c
 void	count_rows(t_game *so_long, char *map_file);
 void	read_map(t_game *so_long, int fd);
+void	make_map(t_game *so_long, char *map_file);
+//moves.c
 int	handle_input(int key, t_game *so_long);
 void	check_move(t_game *so_long);
+void	ft_move(t_game *so_long);
+//check_game.c
 int	check_map(t_game *so_long);
 void	check_locs(t_game *so_long);
 int	check_surround(t_game *so_long);
+//quit_all.c
 int	quit_game(t_game *so_long);
-void    set_sprites(t_game *so_long);
-void    see_map(t_game *so_long);
-void    put_sprites(t_game *so_long, int x, int y);
+void	clear_map(char **map);
+//flood_n_stuff.c
+void	receive_errors(t_game *so_long);
 
 #endif

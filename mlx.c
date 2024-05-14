@@ -23,13 +23,11 @@ void	start_mlx(t_game *so_long)
 		ft_printf("ERROR\n Problem while opening the window."); 
 		return ;
 	}
-	set_sprites(so_long);
-	see_map(so_long);
 }
 
 void	set_sprites(t_game *so_long)
 {
-	so_long->sprites = malloc(5 * sizeof(t_sprite));
+	so_long->sprites = malloc(SPRITES * sizeof(t_sprite));
 	if (!(so_long->sprites))
 	{
 		ft_printf("Couldn't allocate sprites");
@@ -48,15 +46,15 @@ void	see_map(t_game *so_long)
 	int	y;
 
 	y = -1;
-	while (y++ <= so_long->rows)
+	while (++y < so_long->rows)
 	{
 		x = -1;
-		while (x++ <= so_long->cols)
+		while (++x < so_long->cols)
 			put_sprites(so_long, x, y);
 	}
 }
 
-void	put_sprites(t_game *so_long, int y, int x)
+void	put_sprites(t_game *so_long, int x, int y)
 {
 	if (so_long->map[y][x] == '1')
 		mlx_put_image_to_window(so_long->mlx, so_long->mlx_win, so_long->sprites[W1].img, so_long->sprites[W1].width * x, so_long->sprites[W1].height * y);

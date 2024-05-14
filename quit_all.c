@@ -28,6 +28,5 @@ int	quit_game(t_game *so_long)
 	clear_map(so_long->map);
 	free(so_long->map);
 	free(so_long->mlx);
-	exit(EXIT_SUCCESS);
 	return (0);
 }
