@@ -92,7 +92,8 @@ void	check_locs(t_game *so_long);
 int	check_surround(t_game *so_long);
 //quit_all.c
 int	quit_game(t_game *so_long);
-void	clear_map(char **map);
+void	clear_map(t_game *so_long);
+void	clear_sprites(t_game *so_long);
 //flood_n_stuff.c
 void	receive_errors(t_game *so_long);
 

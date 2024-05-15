@@ -12,21 +12,33 @@
 
 #include "so_long.h"
 
-void	clear_map(char **map)
+void	clear_map(t_game *so_long)
 {
 	int	i;
 
 	i = 0;
-	while (map)
-		free(map[i++]);
+	while (so_long->map)
+		free(so_long->map[i++]);
+	free(so_long->map);
+}
+
+void	clear_sprites(t_game *so_long)
+{
+	int	i;
+
+	i = -1;
+	while (++i <= SPRITES)
+		mlx_destroy_image(so_long->mlx, so_long->sprites[i].img);	
+	free(so_long->sprites);	
 }
 
 int	quit_game(t_game *so_long)
 {
-	mlx_destroy_display(so_long->mlx);
+	clear_map(so_long);
+	clear_sprites(so_long);
 	mlx_destroy_window(so_long->mlx, so_long->mlx_win);
-	clear_map(so_long->map);
-	free(so_long->map);
+	mlx_destroy_display(so_long->mlx);
 	free(so_long->mlx);
+	exit(EXIT_SUCCESS);
 	return (0);
 }

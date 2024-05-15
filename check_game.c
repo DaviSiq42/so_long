@@ -14,24 +14,24 @@
 
 void	check_locs(t_game *so_long)
 {
-	int	x;
-	int	y;
+	int	c;
+	int	l;
 
-	y = -1;
-	while (++y < so_long->rows)
+	l = -1;
+	while (++l < so_long->rows)
 	{
-		x = -1;
-		while (++x < so_long->cols)
+		c = -1;
+		while (++c < so_long->cols)
 		{
-			if (so_long->map[y][x] == 'P')
+			if (so_long->map[l][c] == 'P')
 			{
 				so_long->player++;
-				so_long->curr.y = y;
-				so_long->curr.x = x;
+				so_long->curr.y = l;
+				so_long->curr.x = c;
 			}
-			if (so_long->map[y][x] == 'E')
+			if (so_long->map[l][c] == 'E')
 				so_long->exit++;
-			if (so_long->map[y][x] == 'C')
+			if (so_long->map[l][c] == 'C')
 				so_long->total_coins++;
 		}
 	}

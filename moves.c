@@ -35,8 +35,8 @@ void	ft_move(t_game *so_long)
 		so_long->map[so_long->prev.y][so_long->prev.x] = '0';
 	}
 	ft_printf("You moved %d times.\n", so_long->moves);
-	put_sprites(so_long, so_long->prev.y, so_long->prev.x);
-	put_sprites(so_long, so_long->curr.y, so_long->curr.x);
+	put_sprites(so_long, so_long->prev.x, so_long->prev.y);
+	put_sprites(so_long, so_long->curr.x, so_long->curr.y);
 }
 
 void	check_move(t_game *so_long)
@@ -44,23 +44,16 @@ void	check_move(t_game *so_long)
 	if (so_long->map[so_long->curr.y][so_long->curr.x] != '1')
 	{
 		if (so_long->map[so_long->curr.y][so_long->curr.x] == 'C')
-		{
 			so_long->coins++;
-			ft_move(so_long);
-		}
 		else if (so_long->map[so_long->curr.y][so_long->curr.x] == 'E')
 		{
 			if (so_long->coins == so_long->total_coins)
 			{
-				quit_game(so_long);
 				ft_printf("You won!");
-				exit(EXIT_SUCCESS);
+				quit_game(so_long);
 			}
-			else
-				ft_move(so_long);
 		}
-		else
-			ft_move(so_long);
+		ft_move(so_long);
 	}
 	else
 	{
