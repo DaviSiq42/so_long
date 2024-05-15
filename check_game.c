@@ -26,8 +26,8 @@ void	check_locs(t_game *so_long)
 			if (so_long->map[y][x] == 'P')
 			{
 				so_long->player++;
-				so_long->curr.y = x;
-				so_long->curr.x = y;
+				so_long->curr.y = y;
+				so_long->curr.x = x;
 			}
 			if (so_long->map[y][x] == 'E')
 				so_long->exit++;
@@ -43,13 +43,13 @@ int check_surround(t_game *so_long)
 	int	y;
 
 	y = -1;
-	while (y++ <= so_long->rows)
+	while (++y <= so_long->rows)
 	{
 		if (so_long->map[y][0] != '1' || so_long->map[y][so_long->rows] != '1')
 			return (1);
 	}
 	x = -1;
-	while (x++ <= so_long->cols)
+	while (++x <= so_long->cols)
 	{
 		if (so_long->map[so_long->cols][x] != '1' || so_long->map[0][x] != '1')
 			return (1);
