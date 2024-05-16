@@ -45,15 +45,17 @@ int check_surround(t_game *so_long)
 	y = -1;
 	while (++y <= so_long->rows)
 	{
-		if (so_long->map[y][0] != '1' || so_long->map[y][so_long->rows] != '1')
+		if (so_long->map[y][0] != '1' || so_long->map[y][so_long->cols] != '1')
 			return (1);
 	}
 	x = -1;
+	ft_printf("y = %i", y);
 	while (++x <= so_long->cols)
 	{
-		if (so_long->map[so_long->cols][x] != '1' || so_long->map[0][x] != '1')
+		if (so_long->map[so_long->rows][x] != '1' || so_long->map[0][x] != '1')
 			return (1);
 	}
+	ft_printf("x = %i", x);
 	return (0);
 }
 
@@ -61,12 +63,12 @@ int	check_map(t_game *so_long)
 {
 	check_locs(so_long);
 	if (so_long->player != 1)
-		return (11);
+		receive_errors(so_long, "ERROR\nWrong number of players.");
 	if (so_long->exit != 1)
-		return (22);
+		receive_errors(so_long, "ERROR\nWrong number of exits."); 
 	if (so_long->total_coins < 1)
-		return (33);
+		receive_errors(so_long, "ERROR\nNo coins on the map.");
 	if (check_surround(so_long) == 1)
-		return (44);
+		receive_errors(so_long, "ERROR\nMap not surrounded by walls.");
 	return (0);
 }

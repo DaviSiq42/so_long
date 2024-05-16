@@ -39,6 +39,5 @@ int	quit_game(t_game *so_long)
 	mlx_destroy_window(so_long->mlx, so_long->mlx_win);
 	mlx_destroy_display(so_long->mlx);
 	free(so_long->mlx);
-	exit(EXIT_SUCCESS);
 	return (0);
 }

@@ -11,16 +11,11 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-void	receive_errors(t_game *so_long)
+
+void	receive_errors(t_game *so_long, char *msg)
 {
-	if (check_map(so_long) == 11)
-		ft_printf("ERROR\nWrong number of players.");
-	if (check_map(so_long) == 22)
-		ft_printf("ERROR\nWrong number of exits.");
-	if (check_map(so_long) == 33)
-		ft_printf("ERROR\nNo coins found on the map.");
-	if (check_map(so_long) == 44)
-		ft_printf("ERROR\nMap is not surrounded by walls.");
+	ft_printf("%s\n", msg);
+	quit_game(so_long);
 	exit(EXIT_FAILURE);
 }
 

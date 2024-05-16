@@ -95,6 +95,6 @@ int	quit_game(t_game *so_long);
 void	clear_map(t_game *so_long);
 void	clear_sprites(t_game *so_long);
 //flood_n_stuff.c
-void	receive_errors(t_game *so_long);
+void	receive_errors(t_game *so_long, char *msg);
 
 #endif
