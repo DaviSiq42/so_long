@@ -29,9 +29,9 @@ void	check_locs(t_game *so_long)
 				so_long->curr.y = l;
 				so_long->curr.x = c;
 			}
-			if (so_long->map[l][c] == 'E')
+			else if (so_long->map[l][c] == 'E')
 				so_long->exit++;
-			if (so_long->map[l][c] == 'C')
+			else if (so_long->map[l][c] == 'C')
 				so_long->total_coins++;
 		}
 	}
@@ -62,6 +62,7 @@ int check_surround(t_game *so_long)
 int	check_map(t_game *so_long)
 {
 	check_locs(so_long);
+	ft_printf("%i", so_long->exit);
 	if (so_long->player != 1)
 		receive_errors(so_long, "ERROR\nWrong number of players.");
 	if (so_long->exit != 1)

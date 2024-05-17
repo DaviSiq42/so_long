@@ -19,14 +19,18 @@ void	count_rows(t_game *so_long, char *map_file)
 
 	so_long->rows = 0;
 	fd = open(map_file, O_RDONLY);
+	if (fd < 0)
+		receive_errors(so_long, "Error while opening map_file");
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break ;
+			receive_errors(so_long, "Couldn't read map");
 		free(line);
 		so_long->rows++;
 	}
+	if (so_long->rows < 3)
+		receive_errors(so_long, "Map too short");
 }
 
 void	read_map(t_game *so_long, int fd)
@@ -39,22 +43,26 @@ void	read_map(t_game *so_long, int fd)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break ;
+			receive_errors(so_long, "Couldn't read and alloc map");
 		so_long->map[i] = ft_strtrim(line, "\n");
 		free(line);
 	}
 	so_long->cols = ft_strlen(so_long->map[0]);
+	if (so_long->cols < 5)
+		receive_errors(so_long, "Map too thin");
 }
 
 void	make_map(t_game *so_long, char *map_file)
 {
 	int	fd;
 
-	fd = open(map_file, O_RDONLY);
 	count_rows(so_long, map_file);
 	so_long->map = ft_calloc(so_long->rows + 1, sizeof(char *));
 	if (!so_long->map)
-		ft_printf("ERROR\n Problem while making map");
+		receive_errors(so_long, "ERROR\n Problem while making map");
+	fd = open(map_file, O_RDONLY);
+	if (fd < 0)
+		receive_errors(so_long, "Error while opening map_file");
 	read_map(so_long, fd);
 	close(fd);
 }

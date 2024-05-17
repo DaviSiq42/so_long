@@ -16,11 +16,11 @@
 # define SIZE 32
 # define SPRITES 5
 
-# define FW "sprites/wall.xpm"
-# define FB "sprites/background.xpm"
-# define FE "sprites/exit.xpm"
-# define FC "sprites/coins.xpm"
-# define FP "sprites/player.xpm"
+# define FW1 "sprites/wall.xpm"
+# define FB1 "sprites/background.xpm"
+# define FE1 "sprites/exit.xpm"
+# define FC1 "sprites/coins.xpm"
+# define FP1 "sprites/player.xpm"
 
 # define W1 0
 # define B1 1
@@ -44,6 +44,12 @@
 #include "libs/libft/libft.h"
 #include "libs/mlx/mlx.h"
 
+typedef enum e_mask
+{
+	KEYPRESS_MASK = (1L << 0),
+	DESTROY_MASK = (1L << 17)
+}	t_mask;
+
 typedef struct s_sprite {
 	void	*img;
 	int	height;
@@ -59,14 +65,14 @@ typedef struct	s_game{
 	t_sprite	*sprites;
 	t_coordinates	curr;
 	t_coordinates	prev;
+	void	*mlx;
+	void	*mlx_win;
+	char	**map;
 	int	exit;
 	int	player;
 	int	total_coins;
 	int	coins;
 	int	moves;
-	void	*mlx;
-	void	*mlx_win;
-	char	**map;
 	int	cols;
 	int	rows;
 }		t_game;
@@ -91,10 +97,11 @@ int	check_map(t_game *so_long);
 void	check_locs(t_game *so_long);
 int	check_surround(t_game *so_long);
 //quit_all.c
-int	quit_game(t_game *so_long);
+void	quit_game(t_game *so_long);
 void	clear_map(t_game *so_long);
 void	clear_sprites(t_game *so_long);
 //flood_n_stuff.c
 void	receive_errors(t_game *so_long, char *msg);
+int	exit_game(t_game *so_long);
 
 #endif

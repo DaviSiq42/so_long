@@ -15,14 +15,15 @@
 void	game_init(char *map)
 {
 	t_game	so_long;
-	
+
+	ft_bzero(&so_long, sizeof(t_game));
 	make_map(&so_long, map);
 	check_map(&so_long);
 	start_mlx(&so_long);
 	set_sprites(&so_long);
 	see_map(&so_long);
-	mlx_hook(so_long.mlx_win, ON_KEYPRESS, (1L << 0), handle_input, &so_long);
-	mlx_hook(so_long.mlx_win, ON_DESTROY, (1L << 17), quit_game, &so_long);
+	mlx_hook(so_long.mlx_win, ON_KEYPRESS, KEYPRESS_MASK, handle_input, &so_long);
+	mlx_hook(so_long.mlx_win, ON_DESTROY, DESTROY_MASK, exit_game, &so_long);
 	mlx_loop(so_long.mlx);
 }
 

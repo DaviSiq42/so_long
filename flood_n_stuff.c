@@ -19,5 +19,11 @@ void	receive_errors(t_game *so_long, char *msg)
 	exit(EXIT_FAILURE);
 }
 
+int	exit_game(t_game *so_long)
+{
+	quit_game(so_long);
+	exit(EXIT_SUCCESS);
+}
+
 /*void	flood_fill(t_game *so_long)
 {*/
