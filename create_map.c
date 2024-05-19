@@ -19,13 +19,13 @@ void	count_rows(t_game *so_long, char *map_file)
 
 	so_long->rows = 0;
 	fd = open(map_file, O_RDONLY);
-	if (fd < 0)
+	if (fd == -1)
 		receive_errors(so_long, "Error while opening map_file");
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			receive_errors(so_long, "Couldn't read map");
+			break ;
 		free(line);
 		so_long->rows++;
 	}
@@ -43,8 +43,10 @@ void	read_map(t_game *so_long, int fd)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			receive_errors(so_long, "Couldn't read and alloc map");
+			receive_errors(so_long, "Couldn't read map");
 		so_long->map[i] = ft_strtrim(line, "\n");
+		if (!so_long->map)
+			receive_errors(so_long, "Couldn't insert map");
 		free(line);
 	}
 	so_long->cols = ft_strlen(so_long->map[0]);

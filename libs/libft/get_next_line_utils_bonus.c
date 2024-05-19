@@ -125,8 +125,10 @@ char	*reset_line(char *c)
 		i++;
 	if (!c[i])
 	{
-		free(c);
-		return (NULL);
+		c = malloc(1 * sizeof(char));
+		if (!c)
+			return (NULL);
+		c[0] = '\0';
 	}
 	str = malloc(sizeof(char) * (ft_strlen(c) - i + 1));
 	if (!str)
@@ -136,5 +138,6 @@ char	*reset_line(char *c)
 		str[j++] = c[i++];
 	str[j] = '\0';
 	free(c);
+	str = check_new_line(str);
 	return (str);
 }

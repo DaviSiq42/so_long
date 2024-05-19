@@ -49,13 +49,11 @@ int check_surround(t_game *so_long)
 			return (1);
 	}
 	x = -1;
-	ft_printf("y = %i", y);
 	while (++x < so_long->cols)
 	{
 		if (so_long->map[so_long->rows - 1][x] != '1' || so_long->map[0][x] != '1')
 			return (1);
 	}
-	ft_printf("x = %i", x);
 	return (0);
 }
 
