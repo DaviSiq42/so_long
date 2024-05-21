@@ -25,5 +25,16 @@ int	exit_game(t_game *so_long)
 	exit(EXIT_SUCCESS);
 }
 
-/*void	flood_fill(t_game *so_long)
-{*/
+void	flood_fill(t_game *so_long)
+{
+	char **test_map;
+	int	i;
+
+	test_map = ft_calloc(so_long->rows + 1, sizeof(char *));
+	i = 0;
+	if (!test_map)
+		receive_errors(so_long, "Error allocating test_map");
+	test_map = so_long->map;
+	while (test_map[i])
+		ft_printf("%s\n", test_map[i++]);
+}
