@@ -25,16 +25,24 @@ int	exit_game(t_game *so_long)
 	exit(EXIT_SUCCESS);
 }
 
-void	flood_fill(t_game *so_long)
+int	flood_fill(int total_coins, int x, int y, char **map)
 {
-	char **test_map;
-	int	i;
+	static int	coins;
+	static int	exit;
 
-	test_map = ft_calloc(so_long->rows + 1, sizeof(char *));
-	i = 0;
-	if (!test_map)
-		receive_errors(so_long, "Error allocating test_map");
-	test_map = so_long->map;
-	while (test_map[i])
-		ft_printf("%s\n", test_map[i++]);
+	if (map[y][x] == '1')
+		return (0);
+	if (map[y][x] == 'E')
+		exit++;
+	if (map[y][x] == 'C')
+		coins++;
+	map[y][x] = '1';
+	flood_fill(total_coins, x - 1, y, map);
+	flood_fill(total_coins, x + 1, y, map);
+	flood_fill(total_coins, x, y - 1, map);
+	flood_fill(total_coins, x, y + 1, map);
+	if (coins == total_coins && exit == 1)
+		return (EXIT_SUCCESS);
+	else
+		return (EXIT_FAILURE);
 }

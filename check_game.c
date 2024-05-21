@@ -12,6 +12,28 @@
 
 #include "so_long.h"
 
+int	check_path(t_game *so_long)
+{
+	int	i;
+	char	**test_map;
+	int	path_checker;
+
+	i = -1;
+	path_checker = 0;
+	test_map = ft_calloc(so_long->rows + 1, sizeof(char *));
+	if (!test_map)
+		receive_errors(so_long, "Couldn't allocate test_map");
+	while (++i < so_long->rows)
+	{
+		test_map[i] = ft_strdup(so_long->map[i]);
+		if (!test_map)
+			receive_errors(so_long, "Couldn't allocate map in test_map");
+	}
+	path_checker = flood_fill(so_long->total_coins, so_long->curr.x, so_long->curr.y, test_map);
+	clear_test_map(test_map);
+	return (path_checker);
+}
+	
 void	check_locs(t_game *so_long)
 {
 	int	c;
@@ -60,7 +82,6 @@ int check_surround(t_game *so_long)
 int	check_map(t_game *so_long)
 {
 	check_locs(so_long);
-	ft_printf("%i", so_long->exit);
 	if (so_long->player != 1)
 		receive_errors(so_long, "ERROR\nWrong number of players.");
 	if (so_long->exit != 1)
@@ -69,5 +90,7 @@ int	check_map(t_game *so_long)
 		receive_errors(so_long, "ERROR\nNo coins on the map.");
 	if (check_surround(so_long) == 1)
 		receive_errors(so_long, "ERROR\nMap not surrounded by walls.");
+	if (check_path(so_long))
+		receive_errors(so_long, "ERROR\nPlayer can't find all coins or exit.");
 	return (0);
 }

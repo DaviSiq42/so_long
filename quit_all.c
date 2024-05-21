@@ -22,6 +22,16 @@ void	clear_map(t_game *so_long)
 	free(so_long->map);
 }
 
+void	clear_test_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
+}
+
 void	clear_sprites(t_game *so_long)
 {
 	int	i;

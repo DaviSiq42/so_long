@@ -25,7 +25,7 @@ char	*add_line(char *buf, char *c)
 			return (NULL);
 		c[0] = '\0';
 	}
-	if (!c || !buf)
+	if (!buf)
 		return (NULL);
 	add = malloc(sizeof(char) * (ft_strlen(buf) + ft_strlen(c) + 1));
 	if (!add)
@@ -38,7 +38,6 @@ char	*add_line(char *buf, char *c)
 		add[i++] = buf[l++];
 	add[ft_strlen(buf) + ft_strlen(c)] = '\0';
 	free(c);
-	add = check_new_line(add);
 	return (add);
 }
 
@@ -125,10 +124,8 @@ char	*reset_line(char *c)
 		i++;
 	if (!c[i])
 	{
-		c = malloc(1 * sizeof(char));
-		if (!c)
-			return (NULL);
-		c[0] = '\0';
+		free(c);
+		return (NULL);
 	}
 	str = malloc(sizeof(char) * (ft_strlen(c) - i + 1));
 	if (!str)

@@ -68,6 +68,7 @@ typedef struct	s_game{
 	void	*mlx;
 	void	*mlx_win;
 	char	**map;
+	char	**test_map;
 	int	exit;
 	int	player;
 	int	total_coins;
@@ -94,14 +95,17 @@ void	check_move(t_game *so_long);
 void	ft_move(t_game *so_long);
 //check_game.c
 int	check_map(t_game *so_long);
+int	check_path(t_game *so_long);
 void	check_locs(t_game *so_long);
 int	check_surround(t_game *so_long);
 //quit_all.c
 void	quit_game(t_game *so_long);
 void	clear_map(t_game *so_long);
+void	clear_test_map(char **map);
 void	clear_sprites(t_game *so_long);
 //flood_n_stuff.c
 void	receive_errors(t_game *so_long, char *msg);
 int	exit_game(t_game *so_long);
+int	flood_fill(int total_coins, int x, int y, char **map);
 
 #endif
