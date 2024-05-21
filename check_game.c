@@ -55,6 +55,8 @@ void	check_locs(t_game *so_long)
 				so_long->exit++;
 			else if (so_long->map[l][c] == 'C')
 				so_long->total_coins++;
+			else if (!ft_strchr("EPC10", so_long->map[l][c]))
+				receive_errors(so_long, "Invalid characters on map");
 		}
 	}
 }

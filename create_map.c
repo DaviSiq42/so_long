@@ -50,7 +50,7 @@ void	read_map(t_game *so_long, int fd)
 		free(line);
 	}
 	so_long->cols = ft_strlen(so_long->map[0]);
-	if (so_long->cols < 5)
+	if (so_long->cols < 3 && so_long->rows < 5)
 		receive_errors(so_long, "Map too thin");
 }
 
