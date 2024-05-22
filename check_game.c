@@ -61,6 +61,24 @@ void	check_locs(t_game *so_long)
 	}
 }
 
+int	check_walls(t_game *so_long)
+{
+	int	i;
+	size_t	main_len;
+
+	i = -1;
+	main_len = ft_strlen(so_long->map[0]);
+	while (++i < so_long->rows)
+	{
+		if (ft_strlen(so_long->map[i]) != main_len)
+			return (EXIT_FAILURE);
+	}
+	so_long->cols = ft_strlen(so_long->map[0]);
+	if (so_long->cols < 3 && so_long->rows < 5)
+		receive_errors(so_long, "Map too thin");
+	return (EXIT_SUCCESS);
+}
+
 int check_surround(t_game *so_long)
 {
 	int	x;
@@ -83,6 +101,10 @@ int check_surround(t_game *so_long)
 
 int	check_map(t_game *so_long)
 {
+	if (check_walls(so_long))
+		receive_errors(so_long, "Invalid map format");
+	if (check_surround(so_long))
+		receive_errors(so_long, "Map not surrounded by walls.");
 	check_locs(so_long);
 	if (so_long->player != 1)
 		receive_errors(so_long, "ERROR\nWrong number of players.");
@@ -90,8 +112,6 @@ int	check_map(t_game *so_long)
 		receive_errors(so_long, "ERROR\nWrong number of exits."); 
 	if (so_long->total_coins < 1)
 		receive_errors(so_long, "ERROR\nNo coins on the map.");
-	if (check_surround(so_long) == 1)
-		receive_errors(so_long, "ERROR\nMap not surrounded by walls.");
 	if (check_path(so_long))
 		receive_errors(so_long, "ERROR\nPlayer can't find all coins or exit.");
 	return (0);

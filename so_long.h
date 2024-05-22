@@ -96,6 +96,7 @@ void	ft_move(t_game *so_long);
 //check_game.c
 int	check_map(t_game *so_long);
 int	check_path(t_game *so_long);
+int	check_walls(t_game *so_long);
 void	check_locs(t_game *so_long);
 int	check_surround(t_game *so_long);
 //quit_all.c
