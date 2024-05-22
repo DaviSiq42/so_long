@@ -27,10 +27,32 @@ void	game_init(char *map)
 	mlx_loop(so_long.mlx);
 }
 
+int	check_ext(char *argv)
+{
+	char	*ext;
+
+	ext = ft_substr(argv, ft_strlen(argv) - 4, 4);
+	if (!ft_strncmp(ext, ".ber", 4))
+	{
+		free(ext);
+		return (EXIT_SUCCESS);
+	}
+	else
+	{
+		free(ext);
+		return (EXIT_FAILURE);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	if (argc == 2)
-		game_init(argv[1]);
+	{
+		if (check_ext(argv[1]))
+			ft_printf("Extension not recognized... Try <file>.ber\n");
+		else
+			game_init(argv[1]);
+	}
 	else
 		ft_printf("Wrong number of arguments... Try type ./so_long <file>.ber\n");
 	return (0);
