@@ -14,9 +14,9 @@
 
 int	check_path(t_game *so_long)
 {
-	int	i;
+	int		i;
 	char	**test_map;
-	int	path_checker;
+	int		path_checker;
 
 	i = -1;
 	path_checker = 0;
@@ -29,11 +29,12 @@ int	check_path(t_game *so_long)
 		if (!test_map)
 			receive_errors(so_long, "Couldn't allocate map in test_map");
 	}
-	path_checker = flood_fill(so_long->total_coins, so_long->curr.x, so_long->curr.y, test_map);
+	path_checker = flood_fill(so_long->total_coins, so_long->curr.x,
+			so_long->curr.y, test_map);
 	clear_test_map(test_map);
 	return (path_checker);
 }
-	
+
 void	check_locs(t_game *so_long)
 {
 	int	c;
@@ -63,7 +64,7 @@ void	check_locs(t_game *so_long)
 
 int	check_walls(t_game *so_long)
 {
-	int	i;
+	int		i;
 	size_t	main_len;
 
 	i = -1;
@@ -79,7 +80,7 @@ int	check_walls(t_game *so_long)
 	return (EXIT_SUCCESS);
 }
 
-int check_surround(t_game *so_long)
+int	check_surround(t_game *so_long)
 {
 	int	x;
 	int	y;
@@ -87,13 +88,15 @@ int check_surround(t_game *so_long)
 	y = -1;
 	while (++y < so_long->rows)
 	{
-		if (so_long->map[y][0] != '1' || so_long->map[y][so_long->cols - 1] != '1')
+		if (so_long->map[y][0] != '1' ||
+			so_long->map[y][so_long->cols - 1] != '1')
 			return (1);
 	}
 	x = -1;
 	while (++x < so_long->cols)
 	{
-		if (so_long->map[so_long->rows - 1][x] != '1' || so_long->map[0][x] != '1')
+		if (so_long->map[so_long->rows - 1][x] != '1' ||
+			so_long->map[0][x] != '1')
 			return (1);
 	}
 	return (0);
@@ -109,7 +112,7 @@ int	check_map(t_game *so_long)
 	if (so_long->player != 1)
 		receive_errors(so_long, "ERROR\nWrong number of players.");
 	if (so_long->exit != 1)
-		receive_errors(so_long, "ERROR\nWrong number of exits."); 
+		receive_errors(so_long, "ERROR\nWrong number of exits.");
 	if (so_long->total_coins < 1)
 		receive_errors(so_long, "ERROR\nNo coins on the map.");
 	if (check_path(so_long))

@@ -41,8 +41,8 @@
 # define UP	65362
 # define DOWN	65364
 
-#include "libs/libft/libft.h"
-#include "libs/mlx/mlx.h"
+# include "libs/libft/libft.h"
+# include "libs/mlx/mlx.h"
 
 typedef enum e_mask
 {
@@ -50,32 +50,35 @@ typedef enum e_mask
 	DESTROY_MASK = (1L << 17)
 }	t_mask;
 
-typedef struct s_sprite {
+typedef struct s_sprite
+{
 	void	*img;
-	int	height;
-	int	width;
+	int		height;
+	int		width;
 }		t_sprite;
 
-typedef struct	s_coordinates {
+typedef struct s_position
+{
 	int	x;
 	int	y;
-}		t_coordinates;
+}		t_position;
 
-typedef struct	s_game{
+typedef struct s_game
+{
 	t_sprite	*sprites;
-	t_coordinates	curr;
-	t_coordinates	prev;
-	void	*mlx;
-	void	*mlx_win;
-	char	**map;
-	char	**test_map;
-	int	exit;
-	int	player;
-	int	total_coins;
-	int	coins;
-	int	moves;
-	int	cols;
-	int	rows;
+	t_position	curr;
+	t_position	prev;
+	void		*mlx;
+	void		*mlx_win;
+	char		**map;
+	char		**test_map;
+	int			exit;
+	int			player;
+	int			total_coins;
+	int			coins;
+	int			moves;
+	int			cols;
+	int			rows;
 }		t_game;
 
 //mlx.c
@@ -90,15 +93,15 @@ void	count_rows(t_game *so_long, char *map_file);
 void	read_map(t_game *so_long, int fd);
 void	make_map(t_game *so_long, char *map_file);
 //moves.c
-int	handle_input(int key, t_game *so_long);
+int		handle_input(int key, t_game *so_long);
 void	check_move(t_game *so_long);
 void	ft_move(t_game *so_long);
 //check_game.c
-int	check_map(t_game *so_long);
-int	check_path(t_game *so_long);
-int	check_walls(t_game *so_long);
+int		check_map(t_game *so_long);
+int		check_path(t_game *so_long);
+int		check_walls(t_game *so_long);
 void	check_locs(t_game *so_long);
-int	check_surround(t_game *so_long);
+int		check_surround(t_game *so_long);
 //quit_all.c
 void	quit_game(t_game *so_long);
 void	clear_map(t_game *so_long);
@@ -106,7 +109,7 @@ void	clear_test_map(char **map);
 void	clear_sprites(t_game *so_long);
 //flood_n_stuff.c
 void	receive_errors(t_game *so_long, char *msg);
-int	exit_game(t_game *so_long);
-int	flood_fill(int total_coins, int x, int y, char **map);
+int		exit_game(t_game *so_long);
+int		flood_fill(int total_coins, int x, int y, char **map);
 
 #endif

@@ -14,7 +14,7 @@
 
 void	count_rows(t_game *so_long, char *map_file)
 {
-	int	fd;
+	int		fd;
 	char	*line;
 
 	so_long->rows = 0;
@@ -36,7 +36,7 @@ void	count_rows(t_game *so_long, char *map_file)
 void	read_map(t_game *so_long, int fd)
 {
 	char	*line;
-	int	i;
+	int		i;
 
 	i = -1;
 	while (++i < so_long->rows)

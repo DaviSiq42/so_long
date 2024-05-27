@@ -38,8 +38,8 @@ void	clear_sprites(t_game *so_long)
 
 	i = -1;
 	while (++i < SPRITES)
-		mlx_destroy_image(so_long->mlx, so_long->sprites[i].img);	
-	free(so_long->sprites);	
+		mlx_destroy_image(so_long->mlx, so_long->sprites[i].img);
+	free(so_long->sprites);
 }
 
 void	quit_game(t_game *so_long)

@@ -22,7 +22,8 @@ void	game_init(char *map)
 	start_mlx(&so_long);
 	set_sprites(&so_long);
 	see_map(&so_long);
-	mlx_hook(so_long.mlx_win, ON_KEYPRESS, KEYPRESS_MASK, handle_input, &so_long);
+	mlx_hook(so_long.mlx_win, ON_KEYPRESS, KEYPRESS_MASK,
+		handle_input, &so_long);
 	mlx_hook(so_long.mlx_win, ON_DESTROY, DESTROY_MASK, exit_game, &so_long);
 	mlx_loop(so_long.mlx);
 }
@@ -54,6 +55,6 @@ int	main(int argc, char **argv)
 			game_init(argv[1]);
 	}
 	else
-		ft_printf("Wrong number of arguments... Try type ./so_long <file>.ber\n");
+		ft_printf("Wrong number of arguments. Try type ./so_long <file>.ber\n");
 	return (0);
 }

@@ -86,5 +86,4 @@ int		ft_printnbr(int i);
 int		ft_printhex(unsigned int a, const char format);
 int		ft_printunbr(unsigned int i);
 
-
 #endif
