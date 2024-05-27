@@ -38,27 +38,32 @@ void	ft_move(t_game *so_long)
 	put_sprites(so_long, so_long->curr.x, so_long->curr.y);
 }
 
-void	check_move(t_game *so_long)
+void	check_move(t_game *so_long, int key)
 {
-	if (so_long->map[so_long->curr.y][so_long->curr.x] != '1')
+	if (key == ESC || key == W || key == UP || key == A
+		|| key == LEFT || key == S || key == DOWN || key == D || key == RIGHT)
 	{
-		if (so_long->map[so_long->curr.y][so_long->curr.x] == 'C')
-			so_long->coins++;
-		else if (so_long->map[so_long->curr.y][so_long->curr.x] == 'E')
+		if (so_long->map[so_long->curr.y][so_long->curr.x] != '1')
 		{
-			if (so_long->coins == so_long->total_coins)
+			if (so_long->map[so_long->curr.y][so_long->curr.x] == 'C')
+				so_long->coins++;
+			else if (so_long->map[so_long->curr.y][so_long->curr.x] == 'E')
 			{
-				ft_printf("You won!");
-				exit_game(so_long);
+				if (so_long->coins == so_long->total_coins)
+				{
+					ft_printf("You won!\n");
+					exit_game(so_long);
+				}
 			}
+			ft_move(so_long);
 		}
-		ft_move(so_long);
+		else
+		{
+			so_long->curr.y = so_long->prev.y;
+			so_long->curr.x = so_long->prev.x;
+		}
 	}
-	else
-	{
-		so_long->curr.y = so_long->prev.y;
-		so_long->curr.x = so_long->prev.x;
-	}
+	return ;
 }
 
 int	handle_input(int key, t_game *so_long)
@@ -75,6 +80,6 @@ int	handle_input(int key, t_game *so_long)
 		so_long->curr.y++;
 	else if (key == D || key == RIGHT)
 		so_long->curr.x++;
-	check_move(so_long);
+	check_move(so_long, key);
 	return (0);
 }

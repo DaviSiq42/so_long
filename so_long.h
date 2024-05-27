@@ -94,7 +94,7 @@ void	read_map(t_game *so_long, int fd);
 void	make_map(t_game *so_long, char *map_file);
 //moves.c
 int		handle_input(int key, t_game *so_long);
-void	check_move(t_game *so_long);
+void	check_move(t_game *so_long, int key);
 void	ft_move(t_game *so_long);
 //check_game.c
 int		check_map(t_game *so_long);
